@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+@import 'vars';
+@import 'typography';
+@import "animate";
+@import "colors";
+
+//引入ionic相关
+@import "../vendors/ionic/scss/variables";
+@import "../vendors/ionic/scss/mixins";
+
+@import "../vendors/md-sass/sass-material-colors";
+@import "../vendors/md-sass/sass-material-colors-classes";
+
+@import "override";
+@import "app/common";
+@import "app/tabs";
+@import "app/cart";
+@import "app/glasses";
+@import "app/login";
+@import "app/profile";
+@import "app/model";
+@import "app/statistic";
+@import "app/alarm";
+
+@import "directives/md-label";
+@import "directives/z-ion-item";
+
+body{
+  //color:white;
+  //background-color: $light;
+}

@@ -1,0 +1,24 @@
+<ion-view view-title="消息">
+    <ion-nav-bar class="bar-calm">
+        <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content>
+        <ion-list >
+            <a class="item item-avatar"
+                      ng-repeat="msg in vm.msgs"
+               ui-sref="{{msg.type === 'logistics' ? 'app.message-logistics({id:msg.id})'
+                            : 'app.message-activity({id:msg.id})'}}">
+                <img src="assets/images/message-green.png"/>
+                <h2>{{msg.title}}</h2>
+                <p>{{msg.desc}}
+
+                <span class="item-note">
+                    {{msg.time}}
+                </span>
+                </p>
+            </a>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

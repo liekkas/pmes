@@ -1,0 +1,79 @@
+
+.tab-container{
+  height:$tabs-height;
+  width:100%;
+}
+
+.cus-tab-item-active {
+  opacity: 1;
+  color: $calm;
+  text-align: center;
+  width:25%;
+  height: 100%;
+  font-size: 12px;
+
+  .icon {
+    display: block;
+    margin: 0 auto;
+    color: $calm;
+    height: $tabs-icon-size;
+    font-size: $tabs-icon-size;
+  }
+
+  &:hover{
+    .icon {
+      display: block;
+      margin: 0 auto;
+      color: $calm;
+      height: $tabs-icon-size;
+      font-size: $tabs-icon-size;
+    }
+  }
+}
+
+.cus-tab-item-unactive {
+  color: rgba(black, $tabs-off-opacity);
+  text-align: center;
+  width:25%;
+  height: 100%;
+  font-size: 12px;
+
+  .icon {
+    display: block;
+    margin: 0 auto;
+    height: $tabs-icon-size;
+    font-size: $tabs-icon-size;
+  }
+}
+
+.tabs {
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+
+.tabs-item-hide > .tabs{
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  bottom: -$tabs-height;
+  display: flex;
+}
+
+//覆盖原生样式
+//.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+//  background-color: $light;
+//  color: $calm;
+//}
+
+// 4个自定义
+//.tab-item {
+//  color:red;
+//}
+//.tab-item+.tab-item  {
+//  background-color: $balanced;
+//}
+//.tab-item+.tab-item+.tab-item  {
+//  background-color: $calm;
+//}
+//.tab-item+.tab-item+.tab-item+.tab-item  {
+//  background-color: $positive;
+//}
