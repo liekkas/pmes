@@ -57,7 +57,7 @@
             // 用户登录后，如果返回是登录界面则自动返回到个人首页，同时清除之前的缓存
             if(user !== null && stateName === 'login'){
                 $ionicHistory.clearHistory()
-                $state.go('app.profile');
+                $state.go('app.alarm');
             }
             // 用户只能在设置界面登出，所以如果没有用户登录且要跳转到设置界面的时候就返回到登录界面。
             if(user === null && stateName === 'app.setting'){

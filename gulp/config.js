@@ -44,6 +44,9 @@ module.exports = {
         },{
             name: 'md-sass',
             path: bowerComponentsPath+'/sass-material-colors/sass/*.scss'
+        },{
+            name: 'filter-bar',
+            path: bowerComponentsPath+'/ionic-filter-bar/dist/*.min.*'
         }
         //,{
         //    name: 'semantic',

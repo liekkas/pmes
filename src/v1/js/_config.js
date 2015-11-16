@@ -231,10 +231,17 @@
         }
     };
 
-    app.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+    app.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider) {
         $ionicConfigProvider.scrolling.jsScrolling(true);
         $ionicConfigProvider.views.maxCache(10);
         $ionicConfigProvider.tabs.position('bottom');
+
+        //$ionicFilterBarConfigProvider.theme('calm');
+        $ionicFilterBarConfigProvider.clear('ion-close');
+        $ionicFilterBarConfigProvider.search('ion-search');
+        $ionicFilterBarConfigProvider.backdrop(false);
+        $ionicFilterBarConfigProvider.transition('vertical');
+        $ionicFilterBarConfigProvider.placeholder('网元名称');
 
         $stateProvider
             .state('app',appConfig.app)

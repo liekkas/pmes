@@ -4,46 +4,17 @@
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-content>
-        <ion-item>
-            <!--<label>告警ID</label>-->
-            <p>很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的</p>
+        <ion-item ng-repeat="(key,value) in vm.alarm" style="height: 3.5em;padding-top: 0.5em;">
+            <div class="row">
+                <div class="col col-50" style="text-align: right">
+                    <h2>{{key}}:</h2>
+                </div>
+                <div class="col col-50">
+                    <p>{{value}}</p>
+                </div>
+            </div>
         </ion-item>
-        <ion-item>
-            <label>告警ID</label>
-            <p>很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的很长很胀的</p>
-        </ion-item>
-
 
     </ion-content>
 
-    <div class="ui two column middle aligned very relaxed stackable grid">
-        <div class="column">
-            <div class="ui form">
-                <div class="field">
-                    <label>Username</label>
-                    <div class="ui left icon input">
-                        <input type="text" placeholder="Username">
-                        <i class="user icon"></i>
-                    </div>
-                </div>
-                <div class="field">
-                    <label>Password</label>
-                    <div class="ui left icon input">
-                        <input type="password">
-                        <i class="lock icon"></i>
-                    </div>
-                </div>
-                <div class="ui blue submit button">Login</div>
-            </div>
-        </div>
-        <div class="ui vertical divider">
-            Or
-        </div>
-        <div class="center aligned column">
-            <div class="ui big green labeled icon button">
-                <i class="signup icon"></i>
-                Sign Up
-            </div>
-        </div>
-    </div>
 </ion-view>

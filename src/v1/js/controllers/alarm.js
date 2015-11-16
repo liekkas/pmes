@@ -18,29 +18,6 @@
 
         vm.alarmStats = {};
         vm.alarms = [];
-        for(var i=0;i < 2;i++){
-            vm.alarms.push({
-                id:100+i,level:levels[0],letter:'严重',title:'蓄电池故障',desc:'蓄电池完全放电',time:'2015-05-15'
-            })
-        }
-
-        for(var i=0;i < 1;i++){
-            vm.alarms.push({
-                id:200+i,level:levels[1],letter:'重要',title:'蓄电池故障',desc:'蓄电池完全放电',time:'2015-05-15'
-            })
-        }
-
-        for(var i=0;i < 3;i++){
-            vm.alarms.push({
-                id:300+i,level:levels[2],letter:'次要',title:'蓄电池故障',desc:'蓄电池完全放电',time:'2015-05-15'
-            })
-        }
-
-        for(var i=0;i < 4;i++){
-            vm.alarms.push({
-                id:400+i,level:levels[3],letter:'警告',title:'蓄电池故障',desc:'蓄电池完全放电',time:'2015-05-15'
-            })
-        }
 
         vm.getColor = function (level) {
             switch (level) {
@@ -91,13 +68,31 @@
             getAlarmStats(vm.title);
         };
 
+        vm.listAlarm = function (num, level) {
+            getAlarmList(num,level);
+        };
+
         function getAlarmStats(area){
-            _.forEach(levelsEn, function (level) {
+            _.forEach(levelsEn, function (level,index) {
                 vm.alarmStats[level] = Math.floor(Math.random()*10);
                 if(level === 'lv1'){
                     EventBus.emitMsg('alarmStatsChanged',vm.alarmStats[level]);
+
+                    getAlarmList(vm.alarmStats[level],levels[index]);
                 }
             });
+        }
+
+        function getAlarmList(num,level){
+            vm.alarms = [];
+            vm.alarmListTitle = level+'列表';
+            var now=new Date();
+            for(var i=0;i < num;i++){
+                vm.alarms.push({
+                    id:now.getMilliseconds()+i,level:level,letter:level,title:'蓄电池故障',
+                    desc:'蓄电池完全放电',time:'2015-05-15'
+                })
+            }
         }
 
         getAlarmStats(vm.title);

@@ -28,7 +28,7 @@
                 UserService.saveUser(user);
                 $rootScope.$emit(Events.USER_LOGINED,user);
                 //$state.go($rootScope[Constants.PREVENT_STATE]);
-                $state.go('app.profile');
+                $state.go('app.alarm');
             }else{
                 vm.isLoginError = true;
                 console.log(">>> no: user: "+vm.user);

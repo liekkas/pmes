@@ -6,7 +6,7 @@ var requires = [    //依赖关系
     'ionic',
     'templates',
     'ngCordova',
-    //'semantic-ui',
+    'jett.ionic.filter.bar',
     'chart.js'
 ];
 

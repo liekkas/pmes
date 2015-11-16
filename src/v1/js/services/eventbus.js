@@ -12,7 +12,6 @@
   function EventBus($rootScope) {
 
     function emitMsg(msg, data) {
-      data = data || {};
       $rootScope.$emit(msg, data);
     }
 
