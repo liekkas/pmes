@@ -65,6 +65,24 @@
                     controller: 'ResCtrl as vm'
                 }
             }
+        },
+        'resList': {
+            url: '/res/type/:typeId',
+            views: {
+                'res': {
+                    templateUrl: 'res/res-list.html',
+                    controller: 'ResListCtrl as vm'
+                }
+            }
+        },
+        'resDetail': {
+            url: '/res/detail/:objectId',
+            views: {
+                'res': {
+                    templateUrl: 'res/res-detail.html',
+                    controller: 'ResDetailCtrl as vm'
+                }
+            }
         }
     };
 
@@ -246,15 +264,17 @@
         $stateProvider
             .state('app',appConfig.app)
 
-            //主页
+            //告警
             .state('app.alarm',alarmConfig.alarm)
             .state('app.alarm-detail',alarmConfig.alarmDetail)
 
-            //购物车
+            //性能
             .state('app.perf',perfConfig.perf)
 
-            //三维模型
+            //资源
             .state('app.res',resConfig.res)
+            .state('app.res-list',resConfig.resList)
+            .state('app.res-detail',resConfig.resDetail)
 
             //个人中心
             .state('app.profile',profileConfig.profile)

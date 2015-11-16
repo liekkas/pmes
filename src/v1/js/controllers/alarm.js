@@ -96,6 +96,11 @@
         }
 
         getAlarmStats(vm.title);
+
+        vm.refresh = function () {
+            $scope.$broadcast('scroll.refreshComplete');
+            getAlarmStats(vm.title);
+        }
     }
 
     app.controller('AlarmCtrl', AlarmCtrl);

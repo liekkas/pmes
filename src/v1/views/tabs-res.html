@@ -1,10 +1,21 @@
-<ion-view view-title="资源">
+<ion-view view-title="{{vm.title}}">
 
     <ion-nav-bar class="bar-positive">
-        <ion-nav-buttons side="right">
-            <button class="button button-icon icon ion-ios-search" ng-click="vm.showFilterBar()">
+
+
+        <ion-nav-buttons>
+            <button class="button button-icon ion-navicon"
+                    ng-click="vm.popover.show($event)" ng-show="vm.showAreaBtn">
             </button>
         </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button button-clear no-animation"
+                    ng-click="vm.back()" ng-show="vm.showBackBtn">
+                返回
+            </button>
+        </ion-nav-buttons>
+
     </ion-nav-bar>
 
     <ion-content direction="y" scrollbar-y="false">
@@ -13,12 +24,15 @@
         </ion-refresher>
 
         <ion-list>
-            <ion-item collection-repeat="item in vm.items" >
-                <p>{{item.text}}</p>
-            </ion-item>
+            <a class="item item-icon-left" collection-repeat="item in vm.items"
+               ui-sref="app.res-list({typeId:item.name})">
+                <i class="icon {{item.icon}}"></i>
+                {{item.name}}
+                <span class="badge badge-calm">{{item.value}}</span>
+            </a>
         </ion-list>
 
-        <div ng-if="items !== undefined && !items.length" class="no-results">
+        <div ng-if="vm.items !== undefined && !vm.items.length" class="no-results">
             <p>No Results</p>
         </div>
 

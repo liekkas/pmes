@@ -5,46 +5,72 @@
     'use strict';
 
     /* @ngInject */
-    function ResCtrl($scope,$timeout,$ionicFilterBar) {
+    function ResCtrl($scope,$timeout,$ionicPopover,areas,Constants,EventBus) {
         //视图模型ViewModel
         var vm = this;
 
-        var filterBarInstance;
+        var neTypes = ['蓄电池组','UPS','交流配电屏','直流配电屏','普通空调','中央空调','发电机组','开关电源','路由器','交换机'];
+        var neIcons = ['ion-battery-half','ion-soup-can-outline','ion-shuffle','ion-levels',
+            'ion-arrow-shrink','ion-arrow-expand','ion-android-bulb','ion-toggle','ion-ios-analytics','ion-arrow-swap'];
 
         function getItems () {
             var items = [];
-            for (var x = 1; x < 2000; x++) {
-                items.push({text: 'This is item number ' + x + ' which is an ' + (x % 2 === 0 ? 'EVEN' : 'ODD') + ' number.'});
+            for (var x = 0; x < neTypes.length; x++) {
+                items.push(
+                    {name:neTypes[x],value:Math.ceil(Math.random()*1000)+1,icon:neIcons[x]});
             }
             vm.items = items;
         }
 
         getItems();
 
-        vm.showFilterBar = function () {
-            filterBarInstance = $ionicFilterBar.show({
-                items: vm.items,
-                cancelText: '取消',
-                update: function (filteredItems, filterText) {
-                    vm.items = filteredItems;
-                    if (filterText) {
-                        console.log(filterText);
-                    }
-                }
-            });
+        vm.title = Constants.PROVINCE;
+        vm.showBackBtn = false;
+        vm.showAreaBtn = true;
+
+        $scope.areas = areas[vm.title].subAreas;
+
+        $ionicPopover.fromTemplateUrl('area-list.html',{
+            scope: $scope
+        }).then(function (popover) {
+            vm.popover = popover;
+        });
+
+        $scope.areaChanged = function (area) {
+            console.log(area);
+            vm.popover.hide();
+
+            if(vm.title !== area){
+                vm.title = area;
+                $scope.areas = areas[vm.title].subAreas;
+            }
+
+            vm.showAreaBtn = !_.isEmpty(areas[vm.title].subAreas);
+            vm.showBackBtn = vm.title != Constants.PROVINCE;
+
+            getItems();
+        };
+
+        vm.back = function () {
+            if(vm.title === Constants.PROVINCE) return;
+
+            vm.title = areas[vm.title].parentAreas[0];
+            $scope.areas = areas[vm.title].subAreas;
+
+            vm.showAreaBtn = !_.isEmpty(areas[vm.title].subAreas);
+            vm.showBackBtn = vm.title != Constants.PROVINCE;
+
+            getItems();
         };
 
         vm.refreshItems = function () {
-            if (filterBarInstance) {
-                filterBarInstance();
-                filterBarInstance = null;
-            }
 
             $timeout(function () {
                 getItems();
                 $scope.$broadcast('scroll.refreshComplete');
             }, 1000);
         };
+
     }
 
     app.controller('ResCtrl', ResCtrl);

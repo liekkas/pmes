@@ -16,6 +16,10 @@
 
 
     <ion-content>
+
+        <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="vm.refresh()">
+        </ion-refresher>
+
         <div class="row show-scale">
             <div class="col statistic" ng-click="vm.listAlarm(vm.alarmStats['lv1'],'严重告警')">
                 <div class="value color-red-700">{{vm.alarmStats['lv1']}}</div>
