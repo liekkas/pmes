@@ -1,0 +1,47 @@
+<ion-view view-title="添加问题">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear no-animation"
+                    ng-click="vm.save()">
+                提交
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content scrollbar-y="false">
+
+        <label class="item item-input item-select">
+            <div class="input-label">
+                问题归类
+            </div>
+            <select ng-model="vm.type" ng-change="vm.showSelectValue(vm.type)">
+                <option>请选择</option>
+                <option>水类</option>
+                <option>电类</option>
+                <option>人为类</option>
+            </select>
+        </label>
+
+        <textarea msd-elastic ng-model="vm.txt" placeholder="请输入问题详情..."
+                   style="border: solid 1px #b2b2b2;width: 92%; height: 6em;margin: 1em auto;">
+        </textarea>
+
+        <div style="width: 92%;margin: auto;" ng-if="!vm.isUploadImage">
+            <button ng-click="vm.openSheet()" class="button button-assertive ink"
+                    style="width: 100%;">
+                上传图片
+            </button>
+        </div>
+
+        <div style="width: 92%;margin: auto;">
+            <img id="myImage" style="width: 100%;border: solid 1px #b2b2b2" >
+        </div>
+
+        <div ng-repeat="image in vm.images" style="width: 92%;margin: auto;" ng-if="vm.isUploadImage">
+            <img src="{{image.src}}" style="width: 100%;border: solid 1px #b2b2b2">
+        </div>
+
+
+    </ion-content>
+</ion-view>

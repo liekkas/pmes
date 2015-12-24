@@ -21,11 +21,14 @@
 @import "app/model";
 @import "app/statistic";
 @import "app/alarm";
+@import "app/perf";
 
 @import "directives/md-label";
 @import "directives/z-ion-item";
 
-body{
-  //color:white;
-  //background-color: $light;
+.main {
+    background-image: url("../images/iphone6.png");
+    background-clip: content-box;
+    background-size: cover;
+    height: 600px;
 }

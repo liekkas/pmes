@@ -7,6 +7,8 @@ var requires = [    //依赖关系
     'templates',
     'ngCordova',
     'jett.ionic.filter.bar',
+    'angular-amap',
+    'monospaced.elastic',
     'chart.js'
 ];
 

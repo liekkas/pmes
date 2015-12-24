@@ -1,0 +1,25 @@
+<ion-view view-title="问题详情">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content scrollbar-y="false">
+
+        <label class="item ">
+            问题归类: {{vm.problem.type}}
+        </label>
+
+        <textarea msd-elastic ng-model="vm.txt" contenteditable="false"
+                  style="border: solid 1px #b2b2b2;width: 92%; height: 6em;margin: 1em auto;">
+            {{vm.problem.desc}}
+        </textarea>
+
+
+
+        <div ng-repeat="image in vm.problem.images" style="width: 92%;margin: auto;" ng-if="vm.problem.images.length>0">
+            <img src="{{image.src}}" style="width: 100%;border: solid 1px #b2b2b2">
+        </div>
+
+
+    </ion-content>
+</ion-view>

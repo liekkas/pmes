@@ -98,6 +98,35 @@
                 }
             }
         },
+
+        'problems':{
+            url: '/problems',
+            views: {
+                'profile': {
+                    templateUrl: 'profile/problems.html',
+                    controller: 'ProblemsCtrl as vm'
+                }
+            }
+        },
+        'problemsAdd':{
+            url: '/problems/new',
+            views: {
+                'profile': {
+                    templateUrl: 'profile/problems-add.html',
+                    controller: 'ProblemsAddCtrl as vm'
+                }
+            }
+        },
+        'problemsDetail':{
+            url: '/problems/detail/:problemId',
+            views: {
+                'profile': {
+                    templateUrl: 'profile/problems-detail.html',
+                    controller: 'ProblemsDetailCtrl as vm'
+                }
+            }
+        },
+
         'message': {
             url: '/message',
             views: {
@@ -190,7 +219,9 @@
             url: '/setting/advise',
             views: {
                 'profile': {
-                    templateUrl: 'profile/setting-advise.html'
+                    templateUrl: 'profile/setting-advise.html',
+                    controller: 'AdviseCtrl as vm'
+
                 }
             }
         },
@@ -249,7 +280,8 @@
         }
     };
 
-    app.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider) {
+    app.config(function($stateProvider, $urlRouterProvider,
+                        $ionicConfigProvider,$ionicFilterBarConfigProvider) {
         $ionicConfigProvider.scrolling.jsScrolling(true);
         $ionicConfigProvider.views.maxCache(10);
         $ionicConfigProvider.tabs.position('bottom');
@@ -278,6 +310,10 @@
 
             //个人中心
             .state('app.profile',profileConfig.profile)
+            .state('app.problems',profileConfig.problems)
+            .state('app.problems-add',profileConfig.problemsAdd)
+            .state('app.problems-detail',profileConfig.problemsDetail)
+
             .state('app.message',profileConfig.message)
             .state('app.message-logistics',profileConfig.messageLogistics)
             .state('app.message-activity',profileConfig.messageActivity)
@@ -306,6 +342,14 @@
 
         $urlRouterProvider
             .otherwise('/login');
+    });
+
+    //Charts样式
+    app.config(function (ChartJsProvider) {
+        ChartJsProvider.setOptions({
+            colours: ['#FF5252', '#f57c00'],
+            responsive: true
+        });
     });
 
     //IOS9补丁

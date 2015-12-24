@@ -1,20 +1,10 @@
-<ion-view view-title="告警详情">
+<ion-view view-title="{{vm.title}}">
     <ion-nav-bar class="bar-positive">
         <ion-nav-back-button>
         </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-content>
-        <ion-item ng-repeat="(key,value) in vm.alarm" style="height: 3.5em;padding-top: 0.5em;">
-            <div class="row">
-                <div class="col col-50" style="text-align: right">
-                    <h2>{{key}}:</h2>
-                </div>
-                <div class="col col-50">
-                    <p>{{value}}</p>
-                </div>
-            </div>
-        </ion-item>
-
+    <ion-content scrollbar-y="false">
+        <ng-amap options="vm.mapOptions" class="amap-container"></ng-amap>
     </ion-content>
 
 </ion-view>

@@ -1,11 +1,18 @@
 <ion-view view-title="意见反馈">
-    <ion-nav-bar class="bar-calm">
+    <ion-nav-bar class="bar-positive">
         <ion-nav-back-button>
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-content>
-        <ion-item>
-            TODO
-        </ion-item>
+        <textarea msd-elastic ng-model="vm.txt" placeholder="请输入反馈意见..."
+                  style="border: solid 1px #b2b2b2;width: 92%; height: 10em;margin: 1em auto;">
+        </textarea>
+
+        <div style="width: 92%;margin: auto;">
+            <button ng-click="vm.submit()" class="button button-assertive ink"
+                    style="width: 100%;">
+                提交
+            </button>
+        </div>
     </ion-content>
 </ion-view>

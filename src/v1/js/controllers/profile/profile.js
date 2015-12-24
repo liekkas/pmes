@@ -5,7 +5,8 @@
     'use strict';
 
     /* @ngInject */
-    function ProfileCtrl($state,$rootScope,Constants,Events,UserService,$ionicHistory) {
+    function ProfileCtrl($state,$rootScope,Constants,Events,
+                         UserService,$ionicHistory,$cordovaToast) {
         //视图模型ViewModel
         var vm = this;
         vm.user = UserService.getCurrentUser();
@@ -30,6 +31,18 @@
             console.log('>>>明明有了a：'+vm.user+' state:'+result);
 
             $state.go(result);
+        };
+
+        vm.onLogout = function () {
+            UserService.clearUser();
+            $ionicHistory.clearHistory()
+            $rootScope.$emit(Events.USER_LOGOUTED);
+            $state.go('login');
+            console.log('>>> SettingCtrl:用户退出');
+        };
+
+        vm.checkVersion = function () {
+            $cordovaToast.showShortCenter("已是最新版本 v1.0");
         };
 
         console.log(vm.user);

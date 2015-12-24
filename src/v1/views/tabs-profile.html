@@ -1,10 +1,11 @@
-<ion-view hide-nav-bar="true" view-title="{{profile.user != null ? profile.user.nickname : '未登录'}}">
-    <!--<ion-nav-bar class="bar-calm">-->
-        <!--<ion-nav-back-button>-->
-        <!--</ion-nav-back-button>-->
-    <!--</ion-nav-bar>-->
+<ion-view hide-nav-bar="true"
+          view-title="个人中心">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
 
-    <ion-content>
+    <ion-content scrollbar-y="false">
         <div class="profile-bg">
             <div class="profile-header">
                 <div ng-if="profile.user != null">
@@ -13,6 +14,7 @@
                     </a>
                     <h4 class="user-name">{{profile.user.nickname}}</h4>
                 </div>
+
                 <div ng-if="profile.user == null" class="no-user-image"
                      ui-sref="login">
                     登录 / 注册
@@ -34,32 +36,32 @@
 
             <div class="profile-payinfo-container">
                 <div class="payinfo-item has-border-right">
-                    <a href="{{profile.user == null ? '#/login' : '#/orders'}}"  class="icon-left">
+                    <a ng-click="profile.checkVersion()"  class="icon-left">
                         <i class="icon ion-ios-filing-outline"></i>
-                        待付款
+                        检查版本
                     </a>
                 </div>
 
                 <div class="payinfo-item has-border-right">
-                    <a href="{{profile.user == null ? '#/login' : '#/orders'}}"  class="icon-left">
+                    <a href="{{profile.user == null ? '#/login' : '#/account'}}"  class="icon-left">
                         <i class="icon ion-ios-briefcase-outline"></i>
-                        待收货
-                    </a>
-                </div>
-
-                <div class="payinfo-item has-border-right">
-                    <a href="{{profile.user == null ? '#/login' : '#/orders'}}"  class="icon-left">
-                        <i class="icon ion-ios-compose-outline"></i>
-                        待评价
+                        资料修改
                     </a>
                 </div>
 
                 <div class="payinfo-item">
-                    <a href="{{profile.user == null ? '#/login' : '#/orders'}}"  class="icon-left">
-                        <i class="icon ion-ios-help-outline"></i>
-                        退款/售后
+                    <a href="{{profile.user == null ? '#/login' : '#/setting/advise'}}"  class="icon-left">
+                        <i class="icon ion-ios-compose-outline"></i>
+                        意见反馈
                     </a>
                 </div>
+
+                <!--<div class="payinfo-item">
+                    <a href="{{profile.user == null ? '#/login' : '#/orders'}}"  class="icon-left">
+                        <i class="icon ion-ios-help-outline"></i>
+                        意见反馈
+                    </a>
+                </div>-->
             </div>
         </div>
 
@@ -68,29 +70,37 @@
         </div>
 
         <div class="list">
+            <ion-toggle class="item-icon-left">
+                <i class="icon ion-ios-bell-outline" style="font-size: 16px;"></i>
+                消息推送
+            </ion-toggle>
+
+            <div class="item item-divider">
+            </div>
+
             <a href="{{profile.user == null ? '#/login' : '#/orders'}}" class="item item-icon-left item-icon-right">
                 <i class="icon ion-clipboard" style="font-size: 16px;"></i>
-                我的订单
+                工单处理
                 <span class="item-note">
-                  还未下订单
+                  0
                 </span>
                 <i class="icon ion-chevron-right" style="opacity: 0.5;font-size: 14px;"></i>
             </a>
 
             <a href="{{profile.user == null ? '#/login' : '#/collection'}}" class="item item-icon-left item-icon-right">
                 <i class="icon ion-android-star-outline" style="font-size: 16px;"></i>
-                我的收藏
+                联系人
                 <span class="item-note">
                   4件
                 </span>
                 <i class="icon ion-chevron-right" style="opacity: 0.5;font-size: 14px;"></i>
             </a>
 
-            <a href="{{profile.user == null ? '#/login' : '#/coupon'}}" class="item item-icon-left item-icon-right">
+            <a href="{{profile.user == null ? '#/login' : '#/problems'}}" class="item item-icon-left item-icon-right">
                 <i class="icon ion-ios-pricetags-outline" style="font-size: 16px;"></i>
-                我的优惠券
+                问题上报
                 <span class="item-note">
-                  3张即将过期
+                  已上报2个问题
                 </span>
                 <i class="icon ion-chevron-right" style="opacity: 0.5;font-size: 14px;"></i>
             </a>
@@ -98,12 +108,13 @@
             <div class="item item-divider">
             </div>
 
-            <a href="{{profile.user == null ? '#/login' : '#/setting'}}" class="item item-icon-left">
+            <a ng-click="profile.onLogout()" class="item item-icon-left item-icon-right">
                 <i class="icon ion-ios-gear-outline" style="font-size: 16px;"></i>
-                设置
+                切换帐号
                 <span class="item-note">
-                  更多
+                  斜风细雨
                 </span>
+                <i class="icon ion-chevron-right" style="opacity: 0.5;font-size: 14px;"></i>
             </a>
 
         </div>

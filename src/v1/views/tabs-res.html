@@ -11,7 +11,7 @@
 
         <ion-nav-buttons side="right">
             <button class="button button-clear no-animation"
-                    ng-click="vm.back()" ng-show="vm.showBackBtn">
+                    ng-click="vm.back()" ng-if="vm.showBackBtn">
                 返回
             </button>
         </ion-nav-buttons>
@@ -26,7 +26,7 @@
         <ion-list>
             <a class="item item-icon-left" collection-repeat="item in vm.items"
                ui-sref="app.res-list({typeId:item.name})">
-                <i class="icon {{item.icon}}"></i>
+                <i class="icon {{item.icon}}" style="font-size: 18px;"></i>
                 {{item.name}}
                 <span class="badge badge-calm">{{item.value}}</span>
             </a>

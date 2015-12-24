@@ -1,13 +1,34 @@
-<ion-view hide-nav-bar="true" view-title="性能">
-    <ion-content>
-        <div class="bar bar-header bar-positive item-input-inset">
-            <label class="item-input-wrapper">
-                <i class="icon ion-ios-search placeholder-icon"></i>
-                <input type="search" placeholder="告警标题">
-            </label>
-            <button class="button button-clear">
-                搜索
+<ion-view hide-nav-bar="false" view-title="{{vm.title}}">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons>
+            <button class="button button-icon ion-navicon"
+                    ng-click="vm.popover.show($event)" ng-show="vm.showAreaBtn">
             </button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button button-clear no-animation"
+                    ng-click="vm.back()" ng-show="vm.showBackBtn">
+                返回
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content scrollbar-y="false">
+        <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="vm.refreshItems()">
+        </ion-refresher>
+
+        <div class="padding perf-chart">
+            <label>最近一周告警趋势</label>
+            <canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels"
+                    chart-legend="true" chart-series="vm.series" chart-click="vm.onClick"></canvas>
+        </div>
+
+        <div class="padding perf-chart">
+            <label>全疆问题地市TOP10</label>
+            <canvas class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels">
+
+            </canvas>
         </div>
     </ion-content>
 </ion-view>

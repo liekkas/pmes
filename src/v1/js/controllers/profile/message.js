@@ -10,9 +10,9 @@
         var vm = this;
 
         vm.msgs = [
-            {id:1,type:'logistics',letter:'物流',title:'你有个订单已发货',desc:'暴龙眼镜树脂精品款正在运送中',time:'昨天 12:05'},
-            {id:2,type:'activity',letter:'促销',title:'喜欢的宝贝降价啦，戳这里~',desc:'暴龙5002眼镜大降价',time:'2015-10-15'},
-            {id:3,type:'activity',letter:'促销',title:'双11促销活动',desc:'各种眼镜打半折，即将到来，敬请期待！',time:'2015-10-14'}
+            {id:1,type:'logistics',letter:'物流',title:'停电通知',desc:'明天1点大厦停电1小时',time:'昨天 12:05'},
+            {id:2,type:'activity',letter:'促销',title:'停水通知',desc:'明天2点大厦停水',time:'2015-10-15'},
+            {id:3,type:'activity',letter:'促销',title:'检查通知',desc:'下周开始卫生检查',time:'2015-10-14'}
         ];
 
         vm.remove = function (id) {

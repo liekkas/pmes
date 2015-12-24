@@ -7,11 +7,13 @@
     app.run(onReady);
     app.run(stateChanged);
     app.run(loginChanged);
+    app.run(offGusture);
+
 
     /**
      * @ngInject
      */
-    function onReady($ionicPlatform,$rootScope,Constants) {
+    function onReady($ionicPlatform,$rootScope,Constants,$cordovaToast) {
 
         $ionicPlatform.ready(function() {
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -25,6 +27,36 @@
             StatusBar.styleLightContent();
           }
         });
+
+        // 双击退出
+        $ionicPlatform.registerBackButtonAction(function (e) {
+            if ($state.includes('tab.alarm')) {
+                if ($rootScope.backButtonPressedOnceToExit) {
+                    ionic.Platform.exitApp();
+                } else {
+                    $rootScope.backButtonPressedOnceToExit = true;
+                    $cordovaToast.showShortTop('再按一次退出应用');
+                    setTimeout(function () {
+                        $rootScope.backButtonPressedOnceToExit = false;
+                    }, 2000);
+                }
+            }
+            else if ($ionicHistory.backView()) {
+                $ionicHistory.goBack();
+            } else {
+                if ($rootScope.backButtonPressedOnceToExit) {
+                    ionic.Platform.exitApp();
+                } else {
+                    $rootScope.backButtonPressedOnceToExit = true;
+                    $cordovaToast.showShortTop('再按一次退出应用');
+                    setTimeout(function () {
+                        $rootScope.backButtonPressedOnceToExit = false;
+                    }, 2000);
+                }
+            }
+            e.preventDefault();
+            return false;
+        }, 101);
 
         //默认是首页
         $rootScope[Constants.CURRENT_STATE] = 'tab.home';
@@ -86,6 +118,11 @@
         });
     }
 
+    function offGusture($ionicGesture){
+        //$ionicGesture.off(ionic.Gesture,"swipe", function () {
+        //    //NOTHONE
+        //});
+    }
 
 
 })(angular.module(APP_NAME));
