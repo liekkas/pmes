@@ -20,6 +20,10 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
+    "cordova-plugin-x-toast",
+    "cordova-plugin-actionsheet",
+    "cordova-plugin-camera",
+    "com.synconset.imagepicker",
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [

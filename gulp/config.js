@@ -47,14 +47,13 @@ module.exports = {
         },{
             name: 'filter-bar',
             path: bowerComponentsPath+'/ionic-filter-bar/dist/*.min.*'
+        },{
+            name: 'amap',
+            path: jsComponentsPath+'/angular-amap/*.min.js'
+        },{
+            name: 'angular-elastic',
+            path: bowerComponentsPath+'/angular-elastic/*.js'
         }
-        //,{
-        //    name: 'semantic',
-        //    path: [
-        //        bowerComponentsPath+'/semantic/dist/**/*.*',
-        //        jsComponentsPath+'/SemanticUI-Angular/*.min.js' //angular-semantic
-        //    ]
-        //}
       ],
     'devDest': srcPath + '/assets/vendors',  //复制到开发包下
     'pubDest': publicPath + '/assets/vendors'
